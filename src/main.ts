@@ -1,4 +1,4 @@
-import { Application } from './deps.ts'
+import { Application } from 'https://deno.land/x/oak/mod.ts'
 import router from './router.ts'
 
 const port = 1993
