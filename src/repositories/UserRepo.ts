@@ -18,7 +18,13 @@ const connect = async () => {
 const insertUser = async (user: User) => {
 
     const users = await connect()
+    const u = await users.find({ email: user.email })
+    if (u.length > 0) {
+        throw `Já exite usuário com esse email cadastrado com esse email: ${user.email}`
+    } 
+
     await users.insertOne(user)
+
 }
 
 const recuperarUserByEmail = async (_email: string) => {

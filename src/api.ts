@@ -1,5 +1,4 @@
 import { insertUser, recuperarUserByEmail } from './repositories/UserRepo.ts'
-import { User } from './model/User.ts'
 
 const getHello = ({ response }: { response: any }) => {
     response.body = {
@@ -11,9 +10,9 @@ const getHello = ({ response }: { response: any }) => {
 
 const postUser = async ({ request, response }: { request: any, response: any }) => {
 
-    const body = await request.body();
+    const body = await request.body()
     if (!request.hasBody) {
-        response.status = 400;
+        response.status = 400
 
         response.body = {
             success: false,
@@ -21,13 +20,15 @@ const postUser = async ({ request, response }: { request: any, response: any }) 
         };
     }
     try {
-        insertUser(body.value)
+        await insertUser(body.value)
+        response.status = 201;
     } catch (error) {
-        console.error(error)
-        return
+        response.status = 409    
+        response.body = {
+            message: error
+        }
     }
 
-    response.status = 201;
 
 
 }
