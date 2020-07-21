@@ -7,6 +7,7 @@ export interface User {
     email: string;
     torre: string;
     ap: number;
+    isAdmin: boolean;
 
 
 }
