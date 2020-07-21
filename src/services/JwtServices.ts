@@ -14,12 +14,16 @@ const payload: Payload = {
 
 const createJwt = async (user: any) => {
 
+    console.log(user)
+
     payload['iss'] = 'condo-api'
     payload['sub'] = 'condomínio'
     payload['nome'] = user.name
     payload['isAdmin'] = user.isAdmin
     payload['torre'] = user.torre
     payload['ap'] = user.ap
+
+    
     
     return await makeJwt({ header, payload, key })
 
