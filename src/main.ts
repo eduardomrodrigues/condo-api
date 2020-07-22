@@ -10,7 +10,8 @@ const app = new Application()
 const checkJwt = async (ctx: Context, next: Function) => {
     console.log(`HTTP ${ctx.request.headers.get('Authorization')} on ${ctx.request.url}`);
 
-    if (ctx.request.url.toString().endsWith("/api/v1/user") && (ctx.request.method === 'POST' || ctx.request.method === 'OPTIONS')) {
+    if (ctx.request.url.toString().endsWith("/api/v1/login") && (ctx.request.method === 'POST' || ctx.request.method === 'OPTIONS') ||
+        ctx.request.url.toString().endsWith("/api/v1/user") && (ctx.request.method === 'POST' || ctx.request.method === 'OPTIONS')) {
 
         await next()
     } else {

@@ -1,11 +1,8 @@
 import { Router } from 'https://deno.land/x/oak/mod.ts'
-import { postUser, getUserByEmail } from './api.ts'
+import { postUser, getUserByEmail, postLogin } from './api.ts'
 
 
 const router = new Router()
-const decryptedTokenHandler = (ctx: any, token: any) => {
-    ctx.state.userId = token
-}
 
 
 router
@@ -15,6 +12,8 @@ router
 router
     .get('/api/v1/user/:email', getUserByEmail)
 
+router
+    .post('/api/v1/login', postLogin)
 
 
 

@@ -21,7 +21,7 @@ const insertUser = async (user: User) => {
     const u = await users.find({ email: user.email })
     if (u.length > 0) {
         throw `Já existe usuário com esse email cadastrado com esse email: ${user.email}`
-    } 
+    }
 
     user['isAdmin'] = false
     await users.insertOne(user)
@@ -37,8 +37,14 @@ const recuperarUserByEmail = async (_email: string) => {
 }
 
 
+const checkUserByEmailESenha = async ({ email: _email, senha: _senha }: { email: string, senha: string }) => {
+
+    const users = await connect()
+    return await users.find({ email: _email, senha: _senha })
+}
 
 
-export { insertUser, recuperarUserByEmail }
+
+export { insertUser, recuperarUserByEmail, checkUserByEmailESenha }
 
 
