@@ -8,6 +8,10 @@ export interface User {
     torre: string;
     ap: number;
     isAdmin: boolean;
+    aniversario?: Date;
+    vagasGaragem?: number[];
+    inquilinos?: User[];
+    hasPet?: boolean;
 
 
 }

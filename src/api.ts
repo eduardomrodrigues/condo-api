@@ -57,6 +57,7 @@ const postLogin = async ({ request, response }: { request: any, response: any })
         }
         
         let jwt = await createJwt(user[0])
+        
         response.status = 200;
         response.body = {
             token: jwt

@@ -22,6 +22,8 @@ const createJwt = async (user: any) => {
     payload['isAdmin'] = user.isAdmin
     payload['torre'] = user.torre
     payload['ap'] = user.ap
+    payload['email'] = user.email
+    
 
     
     
