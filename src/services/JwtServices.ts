@@ -8,14 +8,11 @@ const header: Jose = {
     typ: "JWT",
 }
 
-const payload: Payload = {
-    exp: setExpiration(new Date().getTime() + 60000),
-}
-
 const createJwt = async (user: any) => {
 
-    console.log(user)
+    let payload: Payload = {}
 
+    payload['exp'] = setExpiration(new Date().getTime() + (60000))
     payload['iss'] = 'condo-api'
     payload['sub'] = 'condomínio'
     payload['nome'] = user.name
@@ -23,10 +20,9 @@ const createJwt = async (user: any) => {
     payload['torre'] = user.torre
     payload['ap'] = user.ap
     payload['email'] = user.email
-    
 
-    
-    
+
+
     return await makeJwt({ header, payload, key })
 
 }

@@ -40,6 +40,8 @@ const recuperarUserByEmail = async (_email: string) => {
 const checkUserByEmailESenha = async ({ email: _email, senha: _senha }: { email: string, senha: string }) => {
 
     const users = await connect()
+
+
     return await users.find({ email: _email, senha: _senha })
 }
 

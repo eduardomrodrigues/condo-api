@@ -14,6 +14,8 @@ const postUser = async ({ request, response }: { request: any, response: any }) 
         };
     }
     try {
+
+
         let user = await insertUser(body.value)
         let jwt = await createJwt(user)
         response.status = 201;
@@ -46,7 +48,7 @@ const postLogin = async ({ request, response }: { request: any, response: any })
     }
     try {
         let user = await checkUserByEmailESenha(body.value)
-       
+        
         if(user.length === 0){
             response.status = 404
             response.body = {
@@ -58,6 +60,7 @@ const postLogin = async ({ request, response }: { request: any, response: any })
         
         let jwt = await createJwt(user[0])
         
+
         response.status = 200;
         response.body = {
             token: jwt

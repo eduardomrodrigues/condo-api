@@ -12,14 +12,12 @@ const checkJwt = async (ctx: Context, next: Function) => {
 
     if (ctx.request.url.toString().endsWith("/api/v1/login") && (ctx.request.method === 'POST' || ctx.request.method === 'OPTIONS') ||
         ctx.request.url.toString().endsWith("/api/v1/user") && (ctx.request.method === 'POST' || ctx.request.method === 'OPTIONS')) {
-
-
-
-
         await next()
     } else {
 
+
         let token = await validate(ctx.request.headers.get('Authorization'))
+        console.log(token)
 
         if (token.isValid) {
             await next()
