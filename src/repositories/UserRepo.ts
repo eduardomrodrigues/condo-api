@@ -24,6 +24,7 @@ const insertUser = async (user: User) => {
     }
 
     user['isAdmin'] = false
+    user['isComplete'] = false
     await users.insertOne(user)
 
     return user

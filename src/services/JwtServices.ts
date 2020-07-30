@@ -12,7 +12,7 @@ const createJwt = async (user: any) => {
 
     let payload: Payload = {}
 
-    payload['exp'] = setExpiration(new Date().getTime() + (60000))
+    payload['exp'] = setExpiration(new Date().getTime() + (900000))
     payload['iss'] = 'condo-api'
     payload['sub'] = 'condomínio'
     payload['nome'] = user.name
