@@ -1,4 +1,4 @@
-import { MongoClient } from "https://deno.land/x/mongo@v0.8.0/mod.ts";
+import { MongoClient } from "https://deno.land/x/mongo@v0.9.1/mod.ts";
 import { User } from '../model/User.ts'
 
 
@@ -20,7 +20,7 @@ const insertUser = async (user: User) => {
     const users = await connect()
     const u = await users.find({ email: user.email })
     if (u.length > 0) {
-        throw `Já existe usuário com esse email cadastrado com esse email: ${user.email}`
+        throw `Já existe usuário com esse email`
     }
 
     user['isAdmin'] = false
